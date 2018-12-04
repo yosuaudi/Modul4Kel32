@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>JSF RSBK</title>
+    </h:head>
+    <style>
+        .rainbow-table {
+width: 80%;
+border-collapse: collapse;
+box-shadow: 0 2px 3px 1px #ddd;
+overflow: hidden;
+border:10px solid #fff;
+}
+.rainbow-table th,.rainbow-table td{
+vertical-align: top;
+padding:10px 7px;
+text-align: left;
+margin:0;
+}
+.rainbow-table tbody {
+color: #fff;
+}
+/* Make table like rainbow */
+.rainbow-table tbody tr:nth-child(4n+1) { /* 4n is 4 colours */
+background:#cc3333; /* red */
+}
+.rainbow-table tbody tr:nth-child(4n+2) {
+background:#cccc33; /* yellow */
+}
+.rainbow-table tbody tr:nth-child(4n+3) {
+background:#33cc33; /* green */
+}
+.rainbow-table tbody tr:nth-child(4n+4) {
+background:#3333cc; /* blue */
+}
+    </style>
+    <body background="a.jpg">
+        
+        <center>
+            <h1><font face="impact">MINA SEBLAK BURUHAY</font></h1>
+            <h2><font face="verdana">Daftar Pesanan</font></h2>
+            <h:form>
+            <h:dataTable class="rainbow-table" value="#{pesanan.get_all_pesanan}" 
+                         var="pesan" border="1" cellpadding="2" cellspacing="2" width="800px">
+                <h:outputText value="#{pesanan.namaPemesan}"/>
+                <h:column>
+                  <f:facet name="header">ID Pemesan</f:facet>
+                  <center><h:outputText value="#{pesan.idPemesan}"></h:outputText></center>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Nama Pemesan</f:facet>
+                  <h:outputText value="#{pesan.namaPemesan}"></h:outputText>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Jumlah Pesanan</f:facet>
+                  <center><h:outputText value="#{pesan.jmlPesanan}"></h:outputText></center>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Seblak</f:facet>
+                 <h:outputText value="#{pesan.namaSeblak}"></h:outputText>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Harga Satuan</f:facet>
+                  <center><h:outputText value="#{pesan.harga}"></h:outputText></center>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Total Harga Pesanan</f:facet>
+                  <center><h:outputText value="#{pesan.totalharga}"></h:outputText></center>
+                </h:column>
+            </h:dataTable>
+            <br></br>
+            </h:form>
+            <br></br>
+            <h:form>
+                <h:commandButton value="Data Pemesan" action="pemesan.xhtml" ></h:commandButton> |
+                <h:commandButton value="Data Seblak" action="seblak.xhtml" ></h:commandButton>
+            </h:form>
+        </center>
+    </body>
+</html>
+

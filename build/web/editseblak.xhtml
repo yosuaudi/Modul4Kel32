@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<title>JSF RSBK</title>
+</h:head>
+  <style>
+        .zebra-table {
+width: 40%;
+border-collapse: collapse;
+box-shadow: 0 2px 3px 1px #ddd;
+overflow: hidden;
+border:10px solid #fff;
+}
+.zebra-table th,.zebra-table td{
+vertical-align: top;
+padding:10px 7px;
+text-align: center;
+margin:0;
+}
+.zebra-table tbody tr:nth-child(odd) { /* Make table like zebra */
+background:#eee;
+}
+    </style>
+  <body background="b.jpg">
+   <center>
+   <h:form>
+    <h1><font face="verdana">Edit Data Seblak</font></h1>
+    
+     <table class="zebra-table">
+            <tr>
+               <td>ID Seblak :</td>
+               <td><h:inputText value="#{EditSeblak.idSeblak}" required="true"></h:inputText></td>
+            </tr>
+            <tr>
+               <td>Nama Seblak :</td>
+               <td><h:inputText value="#{EditSeblak.namaSeblak}" required="true" ></h:inputText></td>
+            </tr>
+            <tr>
+               <td>Harga :</td>
+               <td><h:inputText value="#{EditSeblak.harga}" required="true"></h:inputText></td>
+            </tr>
+     </table>
+    <br></br>
+    <h:commandButton value="Update" action="#{EditSeblak.Update_Seblak}">
+     <f:param name="Update_idSeblak" value="#{EditSeblak.idSeblak}" /></h:commandButton>
+    <br></br>
+    <br></br>
+    </h:form>
+       <h:form>
+                   <h:commandButton value="Kembali" action="seblak.xhtml"></h:commandButton>
+       </h:form>
+       
+  </center>
+</body>
+</html>

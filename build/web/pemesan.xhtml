@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>JSF RSBK</title>
+    </h:head>
+        <style>
+        .rainbow-table {
+width: 80%;
+border-collapse: collapse;
+box-shadow: 0 2px 3px 1px #ddd;
+overflow: hidden;
+border:10px solid #fff;
+}
+.rainbow-table th,.rainbow-table td{
+vertical-align: top;
+padding:10px 7px;
+text-align: left;
+margin:0;
+}
+.rainbow-table tbody {
+color: #fff;
+}
+/* Make table like rainbow */
+.rainbow-table tbody tr:nth-child(4n+1) { /* 4n is 4 colours */
+background:#cc3333; /* red */
+}
+.rainbow-table tbody tr:nth-child(4n+2) {
+background:#cccc33; /* yellow */
+}
+.rainbow-table tbody tr:nth-child(4n+3) {
+background:#33cc33; /* green */
+}
+.rainbow-table tbody tr:nth-child(4n+4) {
+background:#3333cc; /* blue */
+}
+    </style>
+    <body background="a.jpg">
+        
+        <center>
+            <h1><font face="impact">MINA SEBLAK BURUHAY</font></h1>
+            <h2><font face="verdana">Daftar Pemesan Seblak</font></h2>
+            <h:form>
+            <h:dataTable class="rainbow-table" value="#{pemesan.get_all_pemesan}" 
+                         var="pemes" border="1" cellpadding="2" cellspacing="2" width="800px">
+                <h:outputText value="#{pemesan.namaPemesan}"/>
+                <h:column>
+                  <f:facet name="header">ID Pemesan</f:facet>
+                  <center><h:outputText value="#{pemes.idPemesan}"></h:outputText></center>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Nama Pemesan</f:facet>
+                  <h:outputText value="#{pemes.namaPemesan}"></h:outputText>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">Jumlah Pesanan</f:facet>
+                  <center><h:outputText value="#{pemes.jmlPesanan}"></h:outputText></center>
+                </h:column>
+                <h:column>
+                  <f:facet name="header">ID Seblak</f:facet>
+                  <center><h:outputText value="#{pemes.idSeblak}"></h:outputText></center>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Option</f:facet>
+                    <h:commandButton value="Edit" action="#{pemesan.Edit_Pemesan}">
+                        <f:param name="action" value="#{pemes.idPemesan}" /></h:commandButton>  |
+                    <h:commandButton value="Delete" action="#{pemesan.Delete_Pemesan}" 
+                     onclick="return confirm('Yakin mau dihapus?')"> 
+                     <f:param name="action" value="#{pemes.idPemesan}" /></h:commandButton>     
+                </h:column>
+            </h:dataTable>
+            <br></br>
+            </h:form>
+            <br></br>
+            <h:form>
+                <h:commandButton value="Tambahkan" action="tambahpemesan.xhtml" ></h:commandButton>
+                <h:commandButton value="Kembali" action="index.xhtml" ></h:commandButton>
+            </h:form>
+        </center>
+    </body>
+</html>
+
